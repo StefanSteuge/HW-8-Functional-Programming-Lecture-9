@@ -34,8 +34,3 @@ public class User {
                 "}\n";
     }
 }
-/*
-2. There is a list of users (User {email, loginDate, team}).
-        Filter users who logged in after week ago, group by a team, where K - team, V - email.
-
- */

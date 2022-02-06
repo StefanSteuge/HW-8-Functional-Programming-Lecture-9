@@ -4,7 +4,6 @@ package com.cursor;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -21,7 +20,22 @@ public class Main {
                 new User("user5@corsor.com", LocalDate.of(2022, 1, 17), "Python"),
                 new User("user6@corsor.com", LocalDate.of(2022, 1, 18), "Python"),
                 new User("user7@corsor.com", LocalDate.of(2022, 1, 19), "Python"),
-                new User("user8@corsor.com", LocalDate.of(2022, 1, 20), "Python"));
+                new User("user8@corsor.com", LocalDate.of(2022, 1, 31), "Python"));
+        List<Films> filmsList = Arrays.asList(
+                new Films("Comedy", " Hot Fuzz", 250),
+                new Films("Comedy", " 21 Jump Street", 350),
+                new Films("Comedy", " School of Rock", 270),
+                new Films("Action", " Spider-Man: No Way Home ", 270),
+                new Films("Drama", " Euphoria", 292),
+                new Films("Romance", " Emily in Paris ", 221),
+                new Films("Sci-Fi", " The Matrix ", 435),
+                new Films("Romance", " Brazen", 154),
+                new Films("Drama", " Don't Look Up ", 387),
+                new Films("Sci-Fi", " Dune", 385),
+                new Films("Romance", " The King's Daughter", 278),
+                new Films("Drama", " Dexter: New Blood", 253),
+                new Films("Sci-Fi", " The Expanse", 187),
+                new Films("Action", "11. The Last Duel", 125));
 
         var list = users.stream()
                 .filter(it -> it.getEntered_Data().isAfter(LocalDate.now().minusDays(7)))
@@ -32,34 +46,17 @@ public class Main {
         users.stream()
                 .collect(Collectors.groupingBy(User::getTeam))
                 .entrySet().forEach(System.out::println);
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~ Task 2 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-
-    }
-
-    public static void Films(String genre, String name, int price) {
-        List<Films>filmsList = Arrays.asList(
-                new Films("Comedy"," Hot Fuzz",250),
-                new Films("Comedy"," 21 Jump Street",350),
-                new Films("Comedy"," School of Rock",270),
-                new Films("Action"," Spider-Man: No Way Home ",270),
-                new Films("Drama"," Euphoria",292),
-                new Films("Romance"," Emily in Paris ",221),
-                new Films("Sci-Fi"," The Matrix ",435),
-                new Films("Romance"," Brazen",154),
-                new Films("Drama"," Don't Look Up ",387),
-                new Films("Sci-Fi"," Dune",385),
-                new Films("Romance"," The King's Daughter",278),
-                new Films("Drama"," Dexter: New Blood",253),
-                new Films("Sci-Fi"," The Expanse",187),
-                new Films("Action","11. The Last Duel",125));
-
+        System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~ Task 2 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
         filmsList.stream()
-                .collect(Collectors.groupingBy(Films::getName))
+                .collect(Collectors.groupingBy(Films::getGenre))
                 .entrySet().forEach(System.out::println);
 
+
     }
 
+
 }
+
 
 /*
 1. Implement custom Functional interface using lambda expressions.
