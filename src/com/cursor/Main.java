@@ -10,6 +10,10 @@ public class Main {
 
     public static void main(String[] args) {
 
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~ Task 1 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+        MyFunctionalInterface division = () -> System.out.println("Show text using functional Interface");
+        division.show();
+
         LocalDate localDate = LocalDate.now().minusDays(7);
         List<User> users = Arrays.asList(
                 new User("user_@corsor.com", LocalDate.of(2021, 12, 1), "Java"),
@@ -17,10 +21,10 @@ public class Main {
                 new User("user2@corsor.com", LocalDate.of(2021, 12, 25), "Java"),
                 new User("user3@corsor.com", LocalDate.of(2022, 1, 4), "Java"),
                 new User("user4@corsor.com", LocalDate.of(2022, 1, 7), "Python"),
-                new User("user5@corsor.com", LocalDate.of(2022, 1, 17), "Python"),
-                new User("user6@corsor.com", LocalDate.of(2022, 1, 18), "Python"),
-                new User("user7@corsor.com", LocalDate.of(2022, 1, 19), "Python"),
-                new User("user8@corsor.com", LocalDate.of(2022, 1, 31), "Python"));
+                new User("user5@corsor.com", LocalDate.of(2022, 1, 30), "Python"),
+                new User("user6@corsor.com", LocalDate.of(2022, 2, 1), "Python"),
+                new User("user7@corsor.com", LocalDate.of(2022, 2, 3), "Python"),
+                new User("user8@corsor.com", LocalDate.of(2022, 2, 5), "Python"));
         List<Films> filmsList = Arrays.asList(
                 new Films("Comedy", " Hot Fuzz", 250),
                 new Films("Comedy", " 21 Jump Street", 350),
@@ -40,34 +44,19 @@ public class Main {
         var list = users.stream()
                 .filter(it -> it.getEntered_Data().isAfter(LocalDate.now().minusDays(7)))
                 .toList();
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~ Task 1 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~ Task 2 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.println("\n Users who logged in after week ago: \n" + "\n" + list);
         System.out.println("\n Users grouping by team: \n");
         users.stream()
                 .collect(Collectors.groupingBy(User::getTeam))
                 .entrySet().forEach(System.out::println);
-        System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~ Task 2 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-        filmsList.stream()
-                .collect(Collectors.groupingBy(Films::getGenre))
-                .entrySet().forEach(System.out::println);
-
+        System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~~~~~ Task 3 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+        var filmList = filmsList.stream()
+                .collect(Collectors.groupingBy(Films::getGenre, Collectors.counting()));
+        System.out.println("Count of movies for each genre: \n" + filmList);
+        var averagePrice = filmsList.stream()
+                .collect(Collectors.groupingBy(Films::getGenre, Collectors.averagingDouble(Films::getPrice)));
+        System.out.println("\nThe average price of tickets for each genre: \n" + averagePrice);
 
     }
-
-
 }
-
-
-/*
-1. Implement custom Functional interface using lambda expressions.
-
-
-
-3. There are 2 collections with movies.
-Each Movie has a ticket’s price,  genre.
-Per each genre calculate the average price of tickets and count movies for a particular genre.
-
-* 4. There is a collection of boxes(Box).
-Each box contains a list of some things(Thing). Things may be fragile.
-The task is to add extra packing(Protector) for fragile things using streams.
- */

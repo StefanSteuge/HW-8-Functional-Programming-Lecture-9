@@ -45,9 +45,3 @@ public class Films {
                 '}';
     }
 }
-/*
-3. There are 2 collections with movies.
-        Each Movie has a ticket’s price,  genre.
-        Per each genre calculate the average price of tickets and count movies for a particular genre.
-
- */
