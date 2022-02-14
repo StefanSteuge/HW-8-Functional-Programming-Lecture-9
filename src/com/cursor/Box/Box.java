@@ -1,13 +1,8 @@
 package com.cursor.Box;
 
-import java.time.temporal.IsoFields;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Box {
     public static void main(String[] args) {
@@ -26,13 +21,9 @@ public class Box {
                 new Things("Ninth thing", Protector.IS_FRAGILE),
                 new Things("Tenth thing", Protector.IS_NOT_FRAGILE));
 
-
         Collection<List<Things>> boxListMap = Arrays.asList(thingsList1, thingsList2, thingsList3);
-
         var listStream = boxListMap.stream().toList();
-
-
-         System.out.println("List of things in boxes: \n" + boxListMap);
+        System.out.println("List of things in boxes: \n" + boxListMap);
     }
 }
 

@@ -5,7 +5,6 @@ public class Films {
     private String name;
     private int price;
 
-
     public Films(String genre, String name, int price) {
         this.genre = genre;
         this.name = name;

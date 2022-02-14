@@ -1,8 +1,6 @@
 package com.cursor.Box;
 
-import java.util.List;
-
-public class Things implements ServiceBox{
+public class Things implements ServiceBox {
     private String thing;
     private Protector status;
 
@@ -10,7 +8,6 @@ public class Things implements ServiceBox{
         this.thing = thing;
         this.status = status;
     }
-
 
     public void addBox(String protector) {
 

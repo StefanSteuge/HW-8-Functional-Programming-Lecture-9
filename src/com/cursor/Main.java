@@ -13,7 +13,6 @@ public class Main {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~ Task 1 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
         MyFunctionalInterface division = () -> System.out.println("Show text using functional Interface");
         division.show();
-
         LocalDate localDate = LocalDate.now().minusDays(7);
         List<User> users = Arrays.asList(
                 new User("user_@corsor.com", LocalDate.of(2021, 12, 1), "Java"),
@@ -57,6 +56,5 @@ public class Main {
         var averagePrice = filmsList.stream()
                 .collect(Collectors.groupingBy(Films::getGenre, Collectors.averagingDouble(Films::getPrice)));
         System.out.println("\nThe average price of tickets for each genre: \n" + averagePrice);
-
     }
 }
